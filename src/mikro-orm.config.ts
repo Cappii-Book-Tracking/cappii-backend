@@ -1,6 +1,7 @@
 import { defineConfig } from '@mikro-orm/core';
 import { PostgreSqlDriver } from '@mikro-orm/postgresql';
 import 'dotenv/config';
+import { Migrator } from '@mikro-orm/migrations';
 
 export default defineConfig({
   driver: PostgreSqlDriver,
@@ -22,4 +23,5 @@ export default defineConfig({
     pathTs: './src/seeders',
     glob: '!(*.d).{js,ts}',
   },
+  extensions: [Migrator],
 });
