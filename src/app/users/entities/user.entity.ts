@@ -12,7 +12,11 @@ export const UserSchema = defineEntity({
     username: p.string(),
     email: p.string(),
     password: p.string(),
-    createdAt: p.date().default(new Date()),
+    createdAt: p.datetime().onCreate(() => new Date()),
+    updatedAt: p
+      .datetime()
+      .onCreate(() => new Date())
+      .onUpdate(() => new Date()),
   },
 });
 
